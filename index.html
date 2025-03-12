@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тур в Абхазию</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #007BFF;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тур в Абхазию от агентства «Телепорт»</h1>
+        <div class="image-container">
+            <img src="picture.png" alt="Тур в Абхазию">
+        </div>
+        <p>Вас ждёт незабываемая экскурсия на озеро Рица. Клицарский замок и водопад Мужские слёзы. <strong>Бесплатные дегустации</strong> вина, чая и мёда сделают отдых ещё приятнее.</p>
+        <p>А самые смелые туристы смогут <strong>отправиться на сплав</strong> по горной реке и полетать на параплане.</p>
+        
+        <h2>Оставьте заявку и забронируйте тур по минимальной цене!</h2>
+        
+        <form id="tourForm">
+            <input type="text" id="name" name="name" placeholder="Имя" required>
+            <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <button type="submit">Записаться</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('tourForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyb7pL9OKLovS9Wj66eKSbrkLo55bfSW9FrvuTLWZRVOqy4icC_fEDTCFmpJHI6ObglQA/exec'; // Замените на URL вашего Google Apps Script
+            const formData = new FormData();
+            
+            formData.append('Name', name);
+            formData.append('Phone', phone);
+            formData.append('Email', email);
+            
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.'))
+                .catch(error => console.error('Ошибка!', error.message));
+        });
+    </script>
+</body>
+</html>
+</html>
